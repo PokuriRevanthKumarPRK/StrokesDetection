@@ -1,6 +1,6 @@
 import librosa
 import streamlit as st
-import cv2
+
 from PIL import Image
 import numpy as np
 import tensorflow as tf
@@ -74,4 +74,5 @@ elif face_img:
     st.write(f"Face prediction: {prediction2}")
 else:
     st.write("Please provide audio and/or face input to make predictions.")
+
 

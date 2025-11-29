@@ -31,7 +31,9 @@ if audio_val:
         print("Error")
     D = librosa.stft(y_2)  
     S_db = librosa.amplitude_to_db(np.abs(D), ref=np.max)
-    spectrogram_array = cv2.resize(S_db,((224,224)))
+    spectrogram_image = Image.fromarray(S_db)
+    spectrogram_image = spectrogram_image.resize((224,224))
+    spectrogram_array = np.array(spectrogram_image)
 
 
 
@@ -72,3 +74,4 @@ elif face_img:
     st.write(f"Face prediction: {prediction2}")
 else:
     st.write("Please provide audio and/or face input to make predictions.")
+

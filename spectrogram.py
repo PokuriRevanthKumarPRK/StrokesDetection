@@ -65,7 +65,11 @@ if audio_val and face_img:
     prediction1 = spectrogram_model.predict(spectrogram_array)
     prediction2 = image_model.predict(img_array)
     st.write(f"Spectrogram prediction: {prediction1}, Face prediction: {prediction2}")
-    st.write(f"Prediction : {(prediction1+prediction2)/2*100}")
+    detection = (prediction1+prediction2)/2*100
+    if detection>0.5:
+        st.write("Final Prediction: Have Stroke")
+    else:
+        st.write("Final Prediction: No Stroke")
 elif audio_val:
     prediction1 = spectrogram_model.predict(spectrogram_array)
     st.write(f"Spectrogram prediction: {prediction1}")
@@ -74,5 +78,6 @@ elif face_img:
     st.write(f"Face prediction: {prediction2}")
 else:
     st.write("Please provide audio and/or face input to make predictions.")
+
 
 
